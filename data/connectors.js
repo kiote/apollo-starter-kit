@@ -2,6 +2,7 @@ import Sequelize from 'sequelize';
 import casual	 from 'casual';
 import _ from 'lodash';
 import Mongoose from 'mongoose';
+import rp from 'request-promise';
 
 const db = new Sequelize('blog', null, null, {
   dialect: 'sqlite',
@@ -25,6 +26,12 @@ PostModel.belongsTo(AuthorModel);
 
 // views in MongoDb
 const mongo = Mongoose.connect('mongodb://localhost:27017/views');
+
+const FortuneCookie = {
+  getOne() {
+    return 'Nice';
+  },
+};
 
 const ViewsSchema = Mongoose.Schema({
   postId: String,
@@ -56,5 +63,4 @@ db.sync({ force: true }).then(() => {
 
 const Author = db.models.author;
 const Post = db.models.post;
-
-export { Author, Post, View };
+export { Author, Post, View, FortuneCookie };

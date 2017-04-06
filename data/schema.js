@@ -16,6 +16,7 @@ type Post {
 
 type Query {
   author(firstName: String, lastName: String): Author
+  getFortuneCookie: String
 }
 
 schema {
